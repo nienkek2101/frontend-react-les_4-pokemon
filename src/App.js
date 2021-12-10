@@ -54,22 +54,22 @@ function App() {
 
     }, []);
 
-
-
     return (
-        <>
-            {/*<ul>*/}
-                <PreviewPokemonItem dataPokemon={dataAllPokemon}/>
-                {/*<PreviewPokemonItem dataPokemon={dataPokemon1}/>*/}
-            {/*{dataPokemon && }*/}
-            {/*<h1>{dataPokemon.name}</h1>*/}
-            {/*<p>Moves: <span>{dataPokemon.moves.length}</span></p>*/}
-            {/*<p>Weight: <span>{dataPokemon.weight}</span></p>*/}
-            {/*<p>Abilities: <span>{dataPokemon.abilities[0].ability.name}</span> <span>{dataPokemon.abilities[1].ability.name}</span> <span>{dataPokemon.abilities[2].ability.name}</span></p>*/}
-
-            {/*<img src={dataPokemon.sprites.front_default} alt={dataPokemon.name}>*/}
-            {/*</ul>*/}
-        </>
+        <div>
+            {dataPokemon &&
+                <>
+                    <h1>{dataPokemon.name}</h1>
+                    {/*<p>Moves: <span>{dataPokemon.moves.length}</span></p>*/}
+                    <p>Weight: <span>{dataPokemon.weight}</span></p>
+                    {/*<img src={dataPokemon.sprites.front_default} alt={dataPokemon.name} />*/}
+                    {/*<p>Abilities:*/}
+                    {/*    <span>{dataPokemon.abilities[0].ability.name}</span>*/}
+                    {/*    <span>{dataPokemon.abilities[1].ability.name}</span>*/}
+                    {/*    <span>{dataPokemon.abilities[2].ability.name}</span>*/}
+                    {/*</p>*/}
+                </>
+            }
+        </div>
     );
 }
 
