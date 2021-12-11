@@ -7,24 +7,22 @@ function App() {
     // const [dataPokemon,setDataPokemon] = useState([]);
     // const [dataPokemon1, setDataPokemon1] = useState([]);
     const [dataAllPokemon, setDataAllPokemon] = useState([]);
-    // const [namePokemon, setNamePokemon] = useState('');
-    // const [imagePokemon, setImagePokemon] = useState('');
-    // const [countMovesPokemon, setCountMovesPokemon] = useState('0');
-    // const [weightPokemon, setWeightPokemon] = useState('0');
-    // const [abilitiesPokemon, setAbilitiesPokemon] = useState ([]);
+    const [pokeApiEndpoint, setPokeApiEndpoint] = useState('https://pokeapi.co/api/v2/pokemon');
+
 
     useEffect(() => {
         async function fetchData() {
-            // e.preventDefault();
             try {
                 // const result = await axios.get('https://pokeapi.co/api/v2/pokemon/jigglypuff');
                 // setDataPokemon(result.data);
                 // const result1 = await axios.get('https://pokeapi.co/api/v2/pokemon/ditto');
                 // setDataPokemon1(result1.data);
 
-                const resultAll = await axios.get('https://pokeapi.co/api/v2/pokemon');
+                const resultAll = await axios.get(pokeApiEndpoint);
                 // console.log(resultAll.data.results);
+
                 setDataAllPokemon(resultAll.data.results);
+                console.log(dataAllPokemon);
                 // console.log(dataAllPokemon[0].url);
 
             } catch(e) {
@@ -38,11 +36,11 @@ function App() {
 
     return (
         <div>
-            {Object.keys(dataAllPokemon).length > 0 && <> {dataAllPokemon.map((pokemon) => {
+            {/*<button type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.next)}>Volgende</button>*/}
+            {/*<button type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.previous)}>Vorige</button>*/}
+            {dataAllPokemon && <> {dataAllPokemon.map((pokemon) => {
                 return (
-
-                        <li><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
-
+                        <li key={pokemon.name}><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
                 );
             })}
             </>
@@ -52,6 +50,21 @@ function App() {
 }
 
 export default App;
+
+/* mbv Sam deze werkend gekregen dmv Object.keys().length > 0, maar later werkte hij niet meer? */
+// Krijg de foutmelding cannot convert undefined or null to object
+
+// return (
+//     <div>
+//         {Object.keys(dataAllPokemon).length > 0 && <> {dataAllPokemon.map((pokemon) => {
+//             return (
+//                 <li key={pokemon.name}><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
+//             );
+//         })}
+//         </>
+//         }
+//     </div>
+// );
 
 
 /* Poging 1 - 1 pokemon loggen lukt */
