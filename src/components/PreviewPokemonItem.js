@@ -1,30 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 
-function PreviewPokemonItem({ dataPokemon }) {
-    // return (
-    //     <>
-    //         {/*{dataPokemon && }*/}
-    //         <h1>{dataPokemon.name}</h1>
-    //         <p>Moves: <span>{dataPokemon.moves.length}</span></p>
-    //         <p>Weight: <span>{dataPokemon.weight}</span></p>
-    //         {/*<p>Abilities: <span>{dataPokemon.abilities[0].ability.name}</span> <span>{dataPokemon.abilities[1].ability.name}</span> <span>{dataPokemon.abilities[2].ability.name}</span></p>*/}
-    //
-    //         {/*<img src={dataPokemon.sprites.front_default} alt={dataPokemon.name}>*/}
-    //     </>
-    // );
+function PreviewPokemonItem({ linkPokemon }) {
+    const [dataPokemon, setDataPokemon] = useState();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const result = await axios.get(linkPokemon);
+                setDataPokemon(result.data);
+                console.log(dataPokemon);
+
+            } catch(e) {
+                console.error(e);
+            }
+        };
+        fetchData();
+    }, []);
+
+
     return (
         <>
-            <ul>
-                {dataPokemon && dataPokemon.map((pokemon) => {
-                    return (
-                        <li>
-                            <h1>{pokemon.name}</h1>
-                            {/*<p>Moves: <span>{pokemon.moves.length}</span></p>*/}
-                            {/*<p>Weight: <span>{pokemon.weight}</span></p>*/}
-                        </li>
-                    );
-                })}
-            </ul>
+        {/*    {Object.keys(dataPokemon).length > 0 &&*/}
+        {/*    <>*/}
+        {/*        <h1>{dataPokemon.name}</h1>*/}
+        {/*        <img src={dataPokemon.sprites.front_default} alt={dataPokemon.name}/>*/}
+        {/*        <p>Moves: <span>{dataPokemon.moves.length}</span></p>*/}
+        {/*        <p>Weight: <span>{dataPokemon.weight}</span></p>*/}
+        {/*        <p>Abilities:*/}
+        {/*            {dataPokemon.abilities.map((pokemon) => {*/}
+        {/*                return (*/}
+        {/*                        <li>{pokemon.ability.name}</li>*/}
+        {/*                );*/}
+        {/*            })}*/}
+        {/*        </p>*/}
+        {/*    </>*/}
+        {/*    }*/}
         </>
     );
 }
