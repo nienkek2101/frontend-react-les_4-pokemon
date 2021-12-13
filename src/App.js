@@ -21,8 +21,9 @@ function App() {
                 const resultAll = await axios.get(pokeApiEndpoint);
                 // console.log(resultAll.data.results);
 
-                setDataAllPokemon(resultAll.data.results);
-                console.log(dataAllPokemon);
+                setDataAllPokemon(resultAll.data);
+                console.log(resultAll.data.next);
+                // console.log(dataAllPokemon);
                 // console.log(dataAllPokemon[0].url);
 
             } catch(e) {
@@ -32,13 +33,15 @@ function App() {
 
         fetchData();
 
-    }, []);
+    }, [pokeApiEndpoint]);
 
     return (
         <div>
-            {/*<button type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.next)}>Volgende</button>*/}
-            {/*<button type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.previous)}>Vorige</button>*/}
-            {dataAllPokemon && <> {dataAllPokemon.map((pokemon) => {
+            {/*<button type="button" onClick={() => setPokeApiEndpoint(resultAll.data.next)}>Volgende</button>*/}
+            {/*<button type="button" onClick={() => setPokeApiEndpoint(resultAll.data.previous)}>Vorige</button>*/}
+            <button type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.previous)}>Vorige</button>
+            <button type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.next)}>Volgende</button>
+            {Object.keys(dataAllPokemon).length > 0 && <> {dataAllPokemon.results.map((pokemon) => {
                 return (
                         <li key={pokemon.name}><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
                 );
