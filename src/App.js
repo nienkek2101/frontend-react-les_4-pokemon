@@ -39,15 +39,17 @@ function App() {
         <div>
             {/*<button type="button" onClick={() => setPokeApiEndpoint(resultAll.data.next)}>Volgende</button>*/}
             {/*<button type="button" onClick={() => setPokeApiEndpoint(resultAll.data.previous)}>Vorige</button>*/}
-            <button type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.previous)}>Vorige</button>
-            <button type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.next)}>Volgende</button>
-            {Object.keys(dataAllPokemon).length > 0 && <> {dataAllPokemon.results.map((pokemon) => {
-                return (
-                        <li key={pokemon.name}><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
-                );
-            })}
-            </>
-            }
+            <button class="button" type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.previous)}>Vorige</button>
+            <button class="button" type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.next)}>Volgende</button>
+            <article class="pokemon-items">
+                {Object.keys(dataAllPokemon).length > 0 && <> {dataAllPokemon.results.map((pokemon) => {
+                    return (
+                            <li key={pokemon.name}><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
+                    );
+                })}
+                </>
+                }
+            </article>
         </div>
     );
 }

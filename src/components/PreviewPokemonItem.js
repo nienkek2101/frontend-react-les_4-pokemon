@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './PreviewPokemonItem.css'
 import axios from "axios";
 
 function PreviewPokemonItem({ linkPokemon }) {
@@ -22,19 +23,19 @@ function PreviewPokemonItem({ linkPokemon }) {
     return (
         <>
             {dataPokemon &&
-            <>
+            <div class="pokemon-block">
                 <h1>{dataPokemon.name}</h1>
                 <img src={dataPokemon.sprites.front_default} alt={dataPokemon.name}/>
-                <p>Moves: <span>{dataPokemon.moves.length}</span></p>
-                <p>Weight: <span>{dataPokemon.weight}</span></p>
-                <p>Abilities:
+                <p class="sub-title">Moves: <span>{dataPokemon.moves.length}</span></p>
+                <p class="sub-title">Weight: <span>{dataPokemon.weight}</span></p>
+                <p class="sub-title-abilities">Abilities:
                     {dataPokemon.abilities.map((pokemon) => {
                         return (
-                                <li key={pokemon.ability.name}>{pokemon.ability.name}</li>
+                                <li class="abilities" key={pokemon.ability.name}>{pokemon.ability.name}</li>
                         );
                     })}
                 </p>
-            </>
+            </div>
             }
         </>
     );
