@@ -1,16 +1,45 @@
 .pokemon-block {
     min-width: 130px;
+    /*Flex basis ipv min-width, ik vindt de min-width toch fijner werken*/
+    /*flex-basis: 140px;*/
     background-color: white;
     margin: 10px;
     padding: 20px;
     border-radius: 3px;
-    filter: drop-shadow(6px 6px 8px #858586);
+
+    /*Onderstaand komt uit uitwerkingen, maar wat doet het?*/
+    /*flex-grow: 1;*/
+    /*flex-shrink: 0;*/
+
+    /*filter: drop-shadow(6px 6px 8px #858586);*/
+    /*Onderstaand komt uit uitwerking.*/
+    box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12);
 
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    /*font-weight: 300;*/
 
+}
+
+
+/*Onderstaande ul styling komt uit uitwerkingen*/
+.pokemon-block ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 h1 {
@@ -38,7 +67,9 @@ h1 {
     margin: 5px 0 5px 0;
     padding: 5px;
     background-color: #e6e6e6;
+    border-radius: 4px;
     font-weight: normal;
+    /*in de uitwerkingen gebruiken ze text-align voor uitlijnen. Werkt bij mij niet*/
     display: flex;
     justify-content: center;
 }

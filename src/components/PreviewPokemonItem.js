@@ -17,7 +17,7 @@ function PreviewPokemonItem({ linkPokemon }) {
             }
         };
         fetchData();
-    }, []);
+    }, [linkPokemon]);
 
 
     return (
@@ -28,13 +28,14 @@ function PreviewPokemonItem({ linkPokemon }) {
                 <img src={dataPokemon.sprites.front_default} alt={dataPokemon.name}/>
                 <p class="sub-title">Moves: <span>{dataPokemon.moves.length}</span></p>
                 <p class="sub-title">Weight: <span>{dataPokemon.weight}</span></p>
-                <p class="sub-title-abilities">Abilities:
+                <p class="sub-title-abilities">Abilities:</p>
+                    <ul>
                     {dataPokemon.abilities.map((pokemon) => {
                         return (
                                 <li class="abilities" key={pokemon.ability.name}>{pokemon.ability.name}</li>
                         );
                     })}
-                </p>
+                    </ul>
             </div>
             }
         </>
@@ -42,6 +43,11 @@ function PreviewPokemonItem({ linkPokemon }) {
 }
 
 export default PreviewPokemonItem;
+
+// uitwerkingen geeft bij de key de volgende code:
+// <li key={`${ability.ability.name}-${pokemon.name}`}>
+//     {ability.ability.name}
+// </li>
 
 // return (
 //     <>

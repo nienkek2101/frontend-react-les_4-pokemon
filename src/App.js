@@ -9,7 +9,6 @@ function App() {
     const [dataAllPokemon, setDataAllPokemon] = useState([]);
     const [pokeApiEndpoint, setPokeApiEndpoint] = useState('https://pokeapi.co/api/v2/pokemon');
 
-
     useEffect(() => {
         async function fetchData() {
             try {
@@ -27,6 +26,7 @@ function App() {
                 // console.log(dataAllPokemon[0].url);
 
             } catch(e) {
+                // voor error en loading meldingen, zie uitwerking. Dit was geloof ik niet de opdracht
                 console.error(e);
             }
         };
@@ -39,11 +39,16 @@ function App() {
         <div>
             {/*<button type="button" onClick={() => setPokeApiEndpoint(resultAll.data.next)}>Volgende</button>*/}
             {/*<button type="button" onClick={() => setPokeApiEndpoint(resultAll.data.previous)}>Vorige</button>*/}
-            <button class="button" type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.previous)}>Vorige</button>
-            <button class="button" type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.next)}>Volgende</button>
+
+            {/*Zie uitwerkingen voor button component, deze is ook disabled als er geen waarde in .previous of .next staat*/}
+            <section className="button-bar">
+                <button class="button" type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.previous)}>Vorige</button>
+                <button class="button" type="button" onClick={() => setPokeApiEndpoint(dataAllPokemon.next)}>Volgende</button>
+            </section>
             <article class="pokemon-items">
                 {Object.keys(dataAllPokemon).length > 0 && <> {dataAllPokemon.results.map((pokemon) => {
                     return (
+                        // In uitwerkingen wordt dit niet als list gereturnt
                             <li key={pokemon.name}><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
                     );
                 })}
