@@ -49,7 +49,7 @@ function App() {
                 {Object.keys(dataAllPokemon).length > 0 && <> {dataAllPokemon.results.map((pokemon) => {
                     return (
                         // In uitwerkingen wordt dit niet als list gereturnt
-                            <li key={pokemon.name}><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
+                            <li class="pokemon-items-box" key={pokemon.name}><PreviewPokemonItem linkPokemon={pokemon.url}/></li>
                     );
                 })}
                 </>

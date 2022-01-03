@@ -1,6 +1,7 @@
 .pokemon-block {
     min-width: 130px;
-    /*Flex basis ipv min-width, ik vindt de min-width toch fijner werken*/
+    /*min-height: 400px;*/
+    /*Flex basis ipv min-width, ik vind de min-width toch fijner werken*/
     /*flex-basis: 140px;*/
     background-color: white;
     margin: 10px;
@@ -22,9 +23,12 @@
             0 100px 80px rgba(0, 0, 0, 0.12);
 
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    /*justify-content: center;*/
     align-items: center;
+    /*align-content: stretch;*/
+    flex-direction: column;
+
+    /*flex: 0 0 200px;*/
     /*font-weight: 300;*/
 
 }

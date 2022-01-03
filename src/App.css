@@ -33,11 +33,13 @@ body {
 
 .pokemon-items {
     display: flex;
-    /*flex-direction: row;*/
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-
-
+    /*align-items: stretch;*/
+    flex: 1;
+    /*align-content: stretch;*/
 }
+
 
 
